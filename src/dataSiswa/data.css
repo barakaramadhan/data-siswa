@@ -1,4 +1,4 @@
-/* ===== RESET ===== */
+
 * {
   margin: 0;
   padding: 0;
@@ -6,25 +6,25 @@
   font-family: "Segoe UI", Tahoma, Arial, sans-serif;
 }
 
-/* ===== BODY ===== */
+
 body {
-  background-color: #f1f5f9; /* abu terang */
+  background-color: #f1f5f9; 
   color: #1f2937;
   min-height: 100vh;
   padding: 30px;
 }
 
-/* ===== JUDUL ===== */
+
 h1 {
   text-align: center;
   margin-bottom: 24px;
   font-size: 1.8rem;
   font-weight: 700;
-  color: #1e40af; /* biru sekolah */
+  color: #1e40af; 
   letter-spacing: 0.5px;
 }
 
-/* ===== FORM PENDAFTARAN ===== */
+
 form {
   background: white;
   max-width: 900px;
@@ -50,7 +50,7 @@ input:focus {
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
 }
 
-/* ===== BUTTON ===== */
+
 button {
   background-color: #2563eb;
   color: white;
@@ -66,7 +66,6 @@ button:hover {
   background-color: #1e40af;
 }
 
-/* ===== TABLE ===== */
 table {
   width: 100%;
   max-width: 1000px;
@@ -78,7 +77,7 @@ table {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
-/* ===== HEADER TABLE ===== */
+
 thead {
   background-color: #1e3a8a;
 }
@@ -92,7 +91,7 @@ th {
   letter-spacing: 0.5px;
 }
 
-/* ===== BODY TABLE ===== */
+
 td {
   padding: 12px 14px;
   border-bottom: 1px solid #e5e7eb;
@@ -107,7 +106,7 @@ tbody tr:hover {
   background-color: #e0e7ff;
 }
 
-/* ===== AKSI BUTTON ===== */
+
 td button {
   padding: 6px 12px;
   font-size: 0.8rem;
@@ -116,7 +115,7 @@ td button {
 }
 
 td button:first-child {
-  background-color: #f59e0b; /* edit */
+  background-color: #f59e0b; 
 }
 
 td button:first-child:hover {
@@ -124,14 +123,14 @@ td button:first-child:hover {
 }
 
 td button:last-child {
-  background-color: #dc2626; /* hapus */
+  background-color: #dc2626; 
 }
 
 td button:last-child:hover {
   background-color: #b91c1c;
 }
 
-/* ===== INPUT MODE EDIT ===== */
+
 td input {
   width: 100%;
   padding: 6px;
