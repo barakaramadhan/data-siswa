@@ -9,6 +9,11 @@ export default function DaftarNama(){
         setName(e.target.value);
     }
 
+/**
+ * Handle click event on form submit.
+ * Prevent default form submission, add the input name to the list and reset the input field.
+ * @param {Event} e - The event object.
+ */
     function handleClick(e){
         e.preventDefault();
         setDaftarNama((daftarNama) => {
