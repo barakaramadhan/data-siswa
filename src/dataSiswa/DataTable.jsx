@@ -1,6 +1,10 @@
 import DataSiswa from "./DataSiswa";
+import { useContext } from "react";
+import { DataContext } from "./DataContext";
 
-export default function DataTable({ siswa, onChange, onDelete }) {
+export default function DataTable() {
+  const siswa = useContext(DataContext);
+
   return (
     <table>
       <thead>
@@ -17,9 +21,7 @@ export default function DataTable({ siswa, onChange, onDelete }) {
           <DataSiswa
             key={s.id}
             siswa={s}
-            nomor={index + 1} 
-            onChange={onChange}
-            onDelete={onDelete}
+            nomor={index + 1}
           />
         ))}
       </tbody>

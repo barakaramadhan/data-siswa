@@ -1,4 +1,5 @@
 import { useImmerReducer } from "use-immer";
+import { DataContext, DataDispatchContext } from "./DataContext";
 import DataForm from "./DataForm";
 import DataTable from "./DataTable";
 
@@ -12,65 +13,40 @@ const initialSiswa = [
 ];
 
 function siswaReducer(siswa, action) {
-  switch (action.type) {
-    case "ADD_SISWA":
-      siswa.push({
-        id: id++,
-        nama: action.nama,
-        umur: action.umur,
-        kelas: action.kelas,
-      });
-      break;
-
-    case "CHANGE_SISWA": {
-      const data = siswa.find((s) => s.id === action.id);
-      if (data) {
-        data.nama = action.nama;
-        data.umur = action.umur;
-        data.kelas = action.kelas;
-      }
-      break;
+  if (action.type === "ADD_SISWA") {
+    siswa.push({
+      id: id++,
+      nama: action.nama,
+      umur: action.umur,
+      kelas: action.kelas,
+    });
+  } 
+  else if (action.type === "CHANGE_SISWA") {
+    const data = siswa.find((s) => s.id === action.id);
+    if (data) {
+      data.nama = action.nama;
+      data.umur = action.umur;
+      data.kelas = action.kelas;
     }
-
-    case "DELETE_SISWA": {
-      const index = siswa.findIndex((s) => s.id === action.id);
-      if (index !== -1) siswa.splice(index, 1);
-      break;
-    }
-
-    default:
-      break;
+  } 
+  else if (action.type === "DELETE_SISWA") {
+    const index = siswa.findIndex((s) => s.id === action.id);
+    if (index !== -1) siswa.splice(index, 1);
   }
-
-  return siswa;
 }
 
-export default function SiswaApp() {
+export default function DataApp() {
   const [siswa, dispatch] = useImmerReducer(siswaReducer, initialSiswa);
 
-  function handleAddSiswa(data) {
-    dispatch({ type: "ADD_SISWA", ...data });
-  }
-
-  function handleChangeSiswa(data) {
-    dispatch({ type: "CHANGE_SISWA", ...data });
-  }
-
-  function handleDeleteSiswa(id) {
-    dispatch({ type: "DELETE_SISWA", id });
-  }
-
   return (
-    <div className="app-container">
-      <h1>Data Penerimaan Siswa</h1>
-
-      <DataForm onAdd={handleAddSiswa} />
-
-      <DataTable
-        siswa={siswa}
-        onChange={handleChangeSiswa}
-        onDelete={handleDeleteSiswa}
-      />
-    </div>
+    <DataContext.Provider value={siswa}>
+      <DataDispatchContext.Provider value={dispatch}>
+        <div className="app-container">
+          <h1>Data Penerimaan Siswa</h1>
+          <DataForm />
+          <DataTable />
+        </div>
+      </DataDispatchContext.Provider>
+    </DataContext.Provider>
   );
 }

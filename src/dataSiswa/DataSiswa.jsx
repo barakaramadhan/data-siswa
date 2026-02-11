@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { DataDispatchContext } from "./DataContext";
 
-export default function DataSiswa({ siswa, nomor, onChange, onDelete }) {
+export default function DataSiswa({ siswa, nomor }) {
+  const dispatch = useContext(DataDispatchContext);
   const [isEditing, setIsEditing] = useState(false);
+
   const [form, setForm] = useState({
     nama: siswa.nama,
     umur: siswa.umur,
@@ -14,13 +17,21 @@ export default function DataSiswa({ siswa, nomor, onChange, onDelete }) {
   }
 
   function handleSave() {
-    onChange({
+    dispatch({
+      type: "CHANGE_SISWA",
       id: siswa.id,
       nama: form.nama,
       umur: form.umur,
       kelas: form.kelas,
     });
     setIsEditing(false);
+  }
+
+  function handleDelete() {
+    dispatch({
+      type: "DELETE_SISWA",
+      id: siswa.id,
+    });
   }
 
   return (
@@ -71,7 +82,7 @@ export default function DataSiswa({ siswa, nomor, onChange, onDelete }) {
         )}
         <button
           className="table-btn btn-delete"
-          onClick={() => onDelete(siswa.id)}
+          onClick={handleDelete}
         >
           Delete
         </button>

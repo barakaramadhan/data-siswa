@@ -14,7 +14,8 @@ export default defineConfig({
         task : "task.html",
         daftar_nama : "daftar-nama.html",
         counter: "counter.html",
-        note: "note.html"
+        note: "note.html",
+        profile: "profile.html",
       }
     }
   }
